@@ -34,7 +34,7 @@ class TimeSeries(av):
             symbol:  the symbol for the equity we want to get its data
             outputsize:  The size of the call, supported values are
                 'compact' and 'full; the first returns the last 100 points in the
-                data series, and 'full' returns the full-length intraday times
+                data series, and 'full' returns the full-length daily times
                 series, commonly above 1MB (default 'compact')
         """
         _FUNCTION_KEY = "TIME_SERIES_DAILY"
@@ -52,7 +52,7 @@ class TimeSeries(av):
             symbol:  the symbol for the equity we want to get its data
             outputsize:  The size of the call, supported values are
                 'compact' and 'full; the first returns the last 100 points in the
-                data series, and 'full' returns the full-length intraday times
+                data series, and 'full' returns the full-length daily times
                 series, commonly above 1MB (default 'compact')
         """
         _FUNCTION_KEY = "TIME_SERIES_DAILY_ADJUSTED"
@@ -110,18 +110,6 @@ class TimeSeries(av):
         """
         _FUNCTION_KEY = "TIME_SERIES_MONTHLY_ADJUSTED"
         return _FUNCTION_KEY, 'Monthly Adjusted Time Series', 'Meta Data'
-
-    @av._output_format
-    @av._call_api_on_func
-    def get_batch_stock_quotes(self, symbols):
-        """ Return multiple stock quotes with a single request.
-        It raises ValueError when problems arise
-
-        Keyword Arguments:
-            symbols:  A tuple or list Sof symbols to query
-        """
-        _FUNCTION_KEY = "BATCH_STOCK_QUOTES"
-        return _FUNCTION_KEY, 'Stock Quotes', 'Meta Data'
 
     @av._output_format
     @av._call_api_on_func
